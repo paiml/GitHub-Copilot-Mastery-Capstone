@@ -1,0 +1,58 @@
+# PMAT Configuration for Invoice Reconciliation
+
+[quality_gates]
+max_cyclomatic_complexity = 20
+max_cognitive_complexity = 15
+max_function_length = 50
+max_file_length = 300
+zero_satd = true
+min_test_coverage = 80.0
+
+[analysis]
+# Directories to analyze
+include_dirs = ["src"]
+exclude_dirs = ["tests", "benchmarks", "scripts"]
+
+# File patterns to analyze
+include_patterns = ["*.ts", "*.tsx"]
+exclude_patterns = ["*.test.ts", "*.bench.ts"]
+
+[tdg]
+# Technical Debt Grading thresholds
+grade_a_plus = 95
+grade_a = 90
+grade_b = 80
+grade_c = 70
+grade_d = 60
+
+# Component weights
+structural_weight = 0.20
+semantic_weight = 0.20
+duplication_weight = 0.15
+coupling_weight = 0.15
+documentation_weight = 0.15
+consistency_weight = 0.15
+
+[complexity]
+# Complexity thresholds
+warn_cyclomatic = 15
+fail_cyclomatic = 20
+warn_cognitive = 12
+fail_cognitive = 15
+
+[satd]
+# Self-Admitted Technical Debt detection
+patterns = ["TODO", "FIXME", "HACK", "XXX", "TECHDEBT"]
+severity = "error"
+
+[dead_code]
+# Dead code detection
+detect_unused_functions = true
+detect_unused_variables = true
+detect_unused_imports = true
+
+[duplicates]
+# Code duplication detection
+min_tokens = 50
+similarity_threshold = 0.85
+detection_types = ["exact", "renamed", "modified", "semantic"]
